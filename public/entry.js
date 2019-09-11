@@ -1,4 +1,4 @@
-const googleTrends = require('google-trends-api');
+// const googleTrends = require('google-trends-api');
 // const HttpsProxyAgent = require('https-proxy-agent')
 
 // let proxyAgent = new HttpsProxyAgent('https://proxy-host:8888/');
@@ -34,21 +34,33 @@ const googleTrends = require('google-trends-api');
 
 // Access-Control-Allow-Origin
 
-googleTrends
-  .interestOverTime({ keyword: "Women's march" })
-  .then(function(results) {
-    console.log("These results are awesome", results);
-  })
-  .catch(function(err) {
-    console.error("Oh no there was an error", err);
-});
+// googleTrends
+//   .interestOverTime({ keyword: "Women's march" })
+//   .then(function(results) {
+//     console.log("These results are awesome", results);
+//   })
+//   .catch(function(err) {
+//     console.error("Oh no there was an error", err);
+// });
 
-googleTrends.interestOverTime({ keyword: "Women's march" }, function(
-  err,
-  results
-) {
-  if (err) console.error("there was an error!", err);
-  else console.log("my sweet sweet results", results);
-});
+// googleTrends.interestOverTime({ keyword: "Women's march" }, function(
+//   err,
+//   results
+// ) {
+//   if (err) console.error("there was an error!", err);
+//   else console.log("my sweet sweet results", results);
+// });
+// const googleTrends_URL = `http://localhost:5000/interestOverTime/`;
+// export const getGoogleTrendsData = keyword => {
+//     return fetch(
+//         ${googleTrends_URL}${keyword},
+//         {
+//             method: 'GET',
+//             headers,
+//         }
+//     )
+//     .then(res => res.json())
+//     .then(data => data)
+// }
 
 console.log("working?")
