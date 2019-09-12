@@ -12,6 +12,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@amcharts/amcharts4": "^4.5.16",
+    "@amcharts/amcharts4-geodata": "^4.1.7",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",

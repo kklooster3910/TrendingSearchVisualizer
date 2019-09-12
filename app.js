@@ -30,16 +30,33 @@ app.get('/dailyTrends/:geoLocation', (req, res) => {
        geo: req.params.geoLocation
     })
     .then(data => res.json(JSON.parse(data))
+    // .then(data => console.log(data))
+    // .then(data => res.send(data))
     .catch(err => { 
         console.log(err);
         res.sendStatus(500);
-    }))
+    })
+    )
 });
 
-app.get('/dailyTrends/:geoLocation', (req, res) => {
-    return googleTrends.dailyTrends({
-       trendDate: new Date(),
-       geo: req.params.geoLocation
+// app.get('/dailyTrends/:geoLocation', (req, res) => {
+//     return googleTrends.dailyTrends({
+//        trendDate: new Date(),
+//        geo: req.params.geoLocation
+//     })
+//     .then(data => res.json(JSON.parse(data))
+//     .catch(err => { 
+//         console.log(err);
+//         res.sendStatus(500);
+//     }))
+// });
+
+app.get('/interestByRegion/:searchTerm', (req, res) => {
+    return googleTrends.interestByRegion({
+       keyword: req.params.searchTerm,
+    //    startTime: new Date(),  -- optional... defaults to new Date('2004-01-01')
+    //    endTime: new Date(Date.now()) -- optional... defaults to my comment
+    //    geo: -- optional defaults to worldwide
     })
     .then(data => res.json(JSON.parse(data))
     .catch(err => { 
@@ -48,9 +65,9 @@ app.get('/dailyTrends/:geoLocation', (req, res) => {
     }))
 });
 
-app.get('/interestByRegion/:searchTerm', (req, res) => {
-    return googleTrends.interestByRegion({
-       keyword: req.params.searchTerm,
+app.get('/realTimeTrends/:geoLocation', (req, res) => {
+    return googleTrends.realTimeTrends({
+       geo: req.params.geoLocation,
     //    startTime: new Date(),  -- optional... defaults to new Date('2004-01-01')
     //    endTime: new Date(Date.now()) -- optional... defaults to my comment
     //    geo: -- optional defaults to worldwide
