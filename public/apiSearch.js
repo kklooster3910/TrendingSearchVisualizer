@@ -93,8 +93,8 @@ createTrendResults = (returnData, htmlElement) => {
       listItem.innerHTML = trendItem.geoName + " " + trendItem.value;
       // listItem.innerHTML = trendItem.value
       htmlElement.appendChild(listItem);
-      if (trendItem.value > 0) {
-        chart.geodata.features.forEach(country => {
+      if (trendItem.value >= 0) {
+        chart.geodata.features.forEach((country, idx) => {
           
           // country.properties.isHover = true;
           // console.log(country);
@@ -107,22 +107,55 @@ createTrendResults = (returnData, htmlElement) => {
           //   "value": 100,
           //   "fill": am4core.color("#F05C5C")
           // }]
+          // let identifier = idx;
           if (country.id === trendItem.geoCode) {
             // console.log(country);
-            polygonSeries.data = [
-              {
-                id: country.id,
-                name: country.properties.name,
-                value: trendItem.value,
-                fill: am4core.color("#F05C5C"),
-              },
+            // console.log(polygonSeries.data);
+            let newObj;
+            let color;
+            if (trendItem.value > 95) {
+              color = am4core.color("#239B56");
+            } else if (trendItem.value > 85 && trendItem.value <= 95) {
+              color = am4core.color("#2ECC71");
+            } else if (trendItem.value > 75 && trendItem.value <= 85) {
+              color = am4core.color("#F1C40F");
+            } else if (trendItem.value > 65 && trendItem.value <= 75) {
+              color = am4core.color("#F39C12");
+            } else if (trendItem.value > 55 && trendItem.value <= 65) {
+              color = am4core.color("#E67E22");
+            } else if (trendItem.value > 45 && trendItem.value <= 55) {
+              color = am4core.color("#D35400");
+            } else if (trendItem.value > 35 && trendItem.value <= 45) {
+              color = am4core.color("#C0392B");
+            } else if (trendItem.value > 25 && trendItem.value <= 35) {
+              color = am4core.color("#9B59B6");
+            } else if (trendItem.value > 15 && trendItem.value <= 25) {
+              color = am4core.color("#7D3C98");
+            } else {
+              color = am4core.color("#2C3E50");
+            }
+            newObj = {
+              id: country.id,
+              name: country.properties.name,
+              value: trendItem.value,
+              fill: color
+            };
+            polygonSeries.data.push(newObj)
+            // polygonSeries.data = [
+            //   {
+            //     id: country.id,
+            //     name: country.properties.name,
+            //     value: trendItem.value,
+            //     fill: am4core.color("#F05C5C"),
+            //     [idx]: true,
+            //   },
               // {
               //   id: "FR",
               //   name: "France",
               //   value: 98,
               //   fill: am4core.color("#F05C5C")
               // },
-            ];
+            // ];
             // let count = polygonSeries.getPolygonById(country.id);
             // var france = polygonSeries.getPolygonById("FR");
             // console.log(count);
