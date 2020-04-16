@@ -19,7 +19,7 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "google-trends-api": "^4.9.0",
-    "https-proxy-agent": "^2.2.2",
+    "https-proxy-agent": "^2.2.3",
     "net": "^1.0.2",
     "tls": "0.0.1",
     "webpack": "^4.39.3"
